@@ -5,7 +5,7 @@ _Wonderful memory pool is here to boost your software and reduce memory fragment
 ## Features
 * Suitable for **fast** allocating and freeing big amount of objects
 * Simple and small single-header library which is easy to integrate
-* Written in C++ (with GNU extensions, indirect use of **_Alignof**)
+* Written in C++
 * Minimal dependencies (**libc only**, no use of STL)
 * Automatic pointer alignment and new memory block allocation
 * Flexible (tunable memory block size grow coefficient...)
@@ -71,7 +71,6 @@ Destructor calls 'free' function from libc on all allocated by 'malloc' function
 MemoryPool is a class which is non-copyable (if you will try to copy MemoryPool instance then it must not even compile, deep copying is not supported).
 The minimal possible size of object that MemoryPool instance will allocate is **sizeof(void*)**. This is because of use of a singly-linked list where every list node points to a next list node.
 All methods (except dtors) have qualifier **noexcept** because they must never throw.
-Use of **alignof** from cstddef or indirect use of **_Alignof** which is a GNU extension. It is used to calculate a proper pointer alignment while compiling (alignment is different for different classes).
 
 
 ## Notes

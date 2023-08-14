@@ -26,6 +26,7 @@ The MemoryPool class has next behaviour: it can **allocate** memory chunk, **dea
 #### Allocation
 Next simplified preudo-code is the best explanation ever on how allocation works:
 
+```
 member function **allocate** that returns a pointer (or memory chunk)
 {
     if chunk list is not empty (it is possible to reuse previously deallocated chunk)
@@ -38,6 +39,7 @@ member function **allocate** that returns a pointer (or memory chunk)
         allocate a new big block of memory and store it in block list (to be freed later in destructor)
         create a new chunk from memory block and return that chunk
 }
+```
 
 Every time new block is allocated, size of next allocation is multiplied by allocation size grow coefficient.
 Check the code, it is almost as simple as the pseudo-code above.
@@ -49,6 +51,7 @@ Deallocation is simple: method takes a pointer and pushes it to the singly-linke
 Reservation is allocation of memory block that will be divided into chunks immediately.
 Next pseudo-code is good explanation:
 
+```
 member function **reserve** that takes integral parameter **n** and returns nothing (void)
 {
     allocate memory block big enough to create **n** memory chunks
@@ -56,6 +59,7 @@ member function **reserve** that takes integral parameter **n** and returns noth
     repeat **n** times
         create a new chunk from memory block allocated before and push it to chunk list
 }
+```
 
 When new chunk is created, pointer to allocated memory block is adjusted (because some memory is owned by chunk)
 
@@ -71,10 +75,9 @@ Use of **alignof** from cstddef or indirect use of **_Alignof** which is a GNU e
 
 
 ## Notes
-    * Everything is inside the **art** namespace (it prevents name collisions)
-    * **#define ART_MEMORY_POOL_IMPL** to add implementation while including ArtMemoryPool.hpp
-      (By default, only interfaces and prototypes are included)
-    * **#define NDEBUG** to disable all assertions (make it in release version only)
+* Everything is inside the **art** namespace (it prevents name collisions)
+* **#define ART_MEMORY_POOL_IMPL** to add implementation while including ArtMemoryPool.hpp (By default, only interfaces and prototypes are included)
+* **#define NDEBUG** to disable all assertions (make it in release version only)
 
 
 ## Usage

@@ -27,7 +27,7 @@ The MemoryPool class has next behaviour: it can **allocate** memory chunk, **dea
 Next simplified preudo-code is the best explanation ever on how allocation works:
 
 ```
-member function **allocate** that returns a pointer (or memory chunk)
+member function allocate that returns a pointer (or memory chunk)
 {
     if chunk list is not empty (it is possible to reuse previously deallocated chunk)
         pop value from list and return it
@@ -52,11 +52,11 @@ Reservation is allocation of memory block that will be divided into chunks immed
 Next pseudo-code is good explanation:
 
 ```
-member function **reserve** that takes integral parameter **n** and returns nothing (void)
+member function reserve that takes integral parameter n and returns nothing (void)
 {
-    allocate memory block big enough to create **n** memory chunks
+    allocate memory block big enough to create n memory chunks
 
-    repeat **n** times
+    repeat n times
         create a new chunk from memory block allocated before and push it to chunk list
 }
 ```
@@ -67,10 +67,10 @@ When new chunk is created, pointer to allocated memory block is adjusted (becaus
 MemoryPool class constructor body is almost empty. It initializes some fields and does assertions.
 Destructor calls 'free' function from libc on all allocated by 'malloc' function memory pointers (which are stored in block list).
 
-### Different information for advanced users
+### Different information
 MemoryPool is a class which is non-copyable (if you will try to copy MemoryPool instance then it must not even compile, deep copying is not supported).
-The minimal possible size of object that MemoryPool instance will allocate is **sizeof(void*)**. This is because of use of a singly-linked list where every list node points to a next list node.
-All methods (except dtors) have qualifier **noexcept** because they must never throw.
+The minimal possible size of object that MemoryPool instance can allocate is _sizeof(void*)_. This is because of use of a singly-linked list where every list node points to a next list node.
+All methods (except dtors) have qualifier **noexcept** because they never throw.
 
 
 ## Notes

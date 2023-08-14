@@ -3,14 +3,14 @@ _Wonderful memory pool is here to boost your software and reduce memory fragment
 
 
 ## Features
-    * Suitable for **fast** allocating and freeing big amount of objects
-    * Simple and small single-header library which is easy to integrate
-    * Written in C++ (with GNU extensions, indirect use of **_Alignof**)
-    * Minimal dependencies (**libc only**, no use of STL)
-    * Automatic pointer alignment and new memory block allocation
-    * Flexible (tunable memory block size grow coefficient...)
-    * Single-threaded and not synchronized (may be fixed in future release)
-    * Memory-safe (auto cleanup in class destructor, RAII design pattern)
+* Suitable for **fast** allocating and freeing big amount of objects
+* Simple and small single-header library which is easy to integrate
+* Written in C++ (with GNU extensions, indirect use of **_Alignof**)
+* Minimal dependencies (**libc only**, no use of STL)
+* Automatic pointer alignment and new memory block allocation
+* Flexible (tunable memory block size grow coefficient...)
+* Single-threaded and not synchronized (may be fixed in future release)
+* Memory-safe (auto cleanup in class destructor, RAII design pattern)
 
 
 ## Description
